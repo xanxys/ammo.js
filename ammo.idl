@@ -13,7 +13,7 @@ interface btVector3 {
   void setZ(float z);
   void setValue(float x, float y, float z);
   void normalize();
-  [Value] btVector3 rotate([Ref] btVector3 wAxis, float angle); 
+  [Value] btVector3 rotate([Ref] btVector3 wAxis, float angle);
   float dot([Ref] btVector3 v);
   [Operator="*=", Ref] btVector3 op_mul(float x);
   [Operator="+=", Ref] btVector3 op_add([Ref] btVector3 v);
@@ -480,6 +480,7 @@ interface btGeneric6DofConstraint {
   void setLinearUpperLimit([Const, Ref] btVector3 linearUpper);
   void setAngularLowerLimit([Const, Ref] btVector3 angularLower);
   void setAngularUpperLimit([Const, Ref] btVector3 angularUpper);
+  void setFrames([Const, Ref] btTransform frameA, [Const, Ref] btTransform frameB);
 };
 btGeneric6DofConstraint implements btTypedConstraint;
 
@@ -520,7 +521,7 @@ interface btHingeConstraint {
   void setLimit(float low, float high, float softness, float biasFactor, optional float relaxationFactor);
   void enableAngularMotor(boolean enableMotor, float targetVelocity, float maxMotorImpulse);
   void setAngularOnly(boolean angularOnly);
-  
+
   void enableMotor(boolean enableMotor);
   void setMaxMotorImpulse(float maxMotorImpulse);
   //void setMotorTarget([Const,Ref] btQuaternion qAinB, float dt);
